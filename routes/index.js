@@ -28,6 +28,22 @@ if(!isNaN(req.params.time))
 	var data= {unix:req.params.time, natural:result};
   res.json(data);
 
+} 
+else
+{
+	var isNatural= new Date(req.params.time);
+	if(!isNaN(isNatural))
+	{
+		var data = isNatural/1000;
+		var finalDate = {unix:data, natural:req.params.time};
+		res.json(finalDate);
+	}
+
+	else
+	{
+		res.json({unix:null, natural:null});
+
+	}
 }
 	
 });
